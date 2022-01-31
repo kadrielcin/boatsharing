@@ -1,0 +1,62 @@
+{
+  "name": "boatsharing",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "jest --testEnvironment=node --verbose --forceExit --maxWorkers=1",
+    "test-watch": "jest --testEnvironment=node --verbose --forceExit --watchAll --maxWorkers=1",
+    "test-coverage": " jest --collect-coverage --testEnvironment=node --forceExit --maxWorkers=1",
+    "lint": "lint-staged",
+    "start": "node ./bin/www"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "./**/*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maskelisuvari1211/boatsharing.git"
+  },
+  "author": "kadri elcin <kadrielcin@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maskelisuvari1211/boatsharing/issues"
+  },
+  "homepage": "https://github.com/maskelisuvari1211/boatsharing#readme",
+  "devDependencies": {
+    "connect-livereload": "^0.6.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "husky": "^4.2.5",
+    "jest": "^27.4.7",
+    "lint-staged": "^10.2.11",
+    "livereload": "^0.9.1",
+    "prettier": "2.0.5",
+    "pretty-quick": "^2.0.1",
+    "supertest": "^6.2.2"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "eslint-plugin-jest": "^26.0.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.1.7",
+    "mongoose-autopopulate": "^0.16.0",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
+  }
+}
