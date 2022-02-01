@@ -1,6 +1,5 @@
 <template lang="pug">
-  #app
-    h1 Boatsharing
+  #app  
     #nav
       router-link(to="/") User List
     router-view

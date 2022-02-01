@@ -7,11 +7,11 @@ export default {
     this.incrementCount()
   },
   methods: {
-    ...mapActions(['incrementCount'])
+    ...mapActions(['incrementCount']),
   },
   computed: {
-    ...mapState(['count'])
-  }
+    ...mapState(['count']),
+  },
 }
 </script>
 
