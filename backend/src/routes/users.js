@@ -28,10 +28,19 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/initialize', async (req, res) => {
-  const kadri = await User.create({ name: 'kadri', age: 35 })
-  const serhat = await User.create({ name: 'serhat', age: 36 })
+  const kadri = new User({ name: 'kadri', age: 35, email: 'kadri@yahoo.com' })
+  await kadri.setPassword('test')
+  await kadri.save()
 
-  const baris = await User.create({ name: 'baris', age: 21 })
+  const serhat = new User({ name: 'serhat', age: 36, email: 'serhat@yahoo.com' })
+  await serhat.setPassword('test')
+  await serhat.save()
+
+
+  const baris = new User({ name: 'baris', age: 21, email: 'baris@yahoo.com' })
+  await baris.setPassword('test')
+  await baris.Photosave()
+
   baris.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
 
   const berlinPhoto = await Photo.create({ filename: 'berlin.jpg' })

@@ -13,10 +13,12 @@ mongoose.set('debug', true)
 
 mongoose
   .connect(connectionString, {
-//`mongodb+srv://${username}:${password}@cluster0.oiquu.mongodb.net/${dbName}?retryWrites=true&w=majority`,
+// `mongodb+srv://${username}:${password}@cluster0.oiquu.mongodb.net/${dbName}?retryWrites=true&w=majority`,
 // `mongodb+srv://root:84mJaOirQdQW6hmz@cluster0.oiquu.mongodb.net/Cluster0?retryWrites=true&w=majority`,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
   .then(() => console.log('connection established'))
   .catch(console.log)
+
+  module.exports = mongoose.connection
