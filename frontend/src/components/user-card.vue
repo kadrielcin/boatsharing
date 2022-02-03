@@ -14,10 +14,10 @@ export default {
 .box
   h1 {{ user.name }} ({{ user.age }})
   p Bio: {{ user.bio || defaultBio }}
-
+  h2 Photos ({{ user.photos.length }})
 
   .photo(v-for="photo in user.photos")
-    h3 {{ photo.filename }}
+    img/src="https://picsum.photos${photo.filename}/200/300"
     p(v-if="!photo.likedBy.length")
       | no likes yet!
     p(v-else)
