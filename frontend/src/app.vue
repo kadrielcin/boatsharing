@@ -8,8 +8,8 @@ export default {
     async doLogout() {
       await this.logout()
       this.$router.push('/login')
-    }
-  }
+    },
+  },
 }
 </script>
 <template lang="pug">

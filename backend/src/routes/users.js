@@ -1,8 +1,10 @@
-/* eslint-disable no-console */
 const express = require('express')
 
 const router = express.Router()
+const axios = require('axios')
 
+const describeImage = require('../lib/image-description')
+const downloadImage = require('../lib/download-image')
 const User = require('../models/user')
 const Photo = require('../models/photo')
 
@@ -23,35 +25,50 @@ router.get('/', async (req, res) => {
 
 /* POST create a user */
 router.post('/', async (req, res) => {
-  const createdUser = await User.create(req.body)
+  const userToCreate = {
+    name: req.body.name,
+    age: req.body.age,
+  }
+
+  const createdUser = await User.create(userToCreate)
   res.send(createdUser)
 })
 
+async function createPhoto(filename) {
+  const photo = await Photo.create({ filename })
+
+  const picsumUrl = `https://picsum.photos/seed/${photo._id}/300/300`
+  const pictureRequest = await axios.get(picsumUrl)
+  photo.filename = pictureRequest.request.path
+
+  const imagePath = await downloadImage(picsumUrl, filename)
+  const description = await describeImage(imagePath)
+  photo.description = description.BestOutcome.Description
+
+  return photo.save()
+}
+
 router.get('/initialize', async (req, res) => {
-  const kadri = new User({ name: 'kadri', age: 35, email: 'kadri@yahoo.com' })
-  await kadri.setPassword('test')
-  await kadri.save()
+  const mihri = await User.create({ name: 'kadri', age: 35 })
+  const armagan = await User.create({ name: 'serhat', age: 36 })
 
-  const serhat = new User({ name: 'serhat', age: 36, email: 'serhat@yahoo.com' })
-  await serhat.setPassword('test')
-  await serhat.save()
+  const steve = await User.create({ name: 'baris', age: 21 })
+  steve.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
+  steve.save()
 
+  const berlinPhoto = await createPhoto('berlin.jpg')
+  const munichPhoto = await createPhoto('munich.jpg')
 
-  const baris = new User({ name: 'baris', age: 21, email: 'baris@yahoo.com' })
-  await baris.setPassword('test')
-  await baris.Photosave()
+  await steve.addPhoto(berlinPhoto)
+  await steve.addPhoto(munichPhoto)
 
-  baris.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
+  await armagan.likePhoto(berlinPhoto)
+  await mihri.likePhoto(berlinPhoto)
 
-  const berlinPhoto = await Photo.create({ filename: 'berlin.jpg' })
-  const munichPhoto = await Photo.create({ filename: 'munich.jpg' })
-
-  await baris.addPhoto(berlinPhoto)
-  await baris.addPhoto(munichPhoto)
-
-  await serhat.likePhoto(berlinPhoto)
-  await kadri.likePhoto(berlinPhoto)
-
+  // eslint-disable-next-line no-console
+  // eslint-disable-next-line no-undef
+  // eslint-disable-next-line no-console
+  // eslint-disable-next-line no-undef
   console.log(baris)
   res.sendStatus(200)
 })

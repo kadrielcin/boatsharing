@@ -1,5 +1,6 @@
 const express = require('express')
 const passport = require('passport')
+
 const User = require('../models/user')
 
 const router = express.Router()
@@ -32,7 +33,5 @@ router.delete('/session', async (req, res, next) => {
     return res.sendStatus(200)
   })
 })
-
-
 
 module.exports = router

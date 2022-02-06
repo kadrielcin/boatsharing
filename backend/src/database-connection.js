@@ -18,7 +18,14 @@ mongoose
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
+  // eslint-disable-next-line no-console
   .then(() => console.log('connection established'))
+  // eslint-disable-next-line no-console
   .catch(console.log)
 
-  module.exports = mongoose.connection
+module.exports = mongoose.connection
+  
+
+
+
+  

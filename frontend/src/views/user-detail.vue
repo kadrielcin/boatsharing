@@ -1,4 +1,4 @@
-<script>
+<<script>
 import Counter from '@/components/counter.vue'
 import UserCard from '@/components/user-card.vue'
 import { mapActions } from 'vuex'
