@@ -6,9 +6,11 @@ const logger = require('morgan')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
+
 const User = require('./models/user')
 
 const mongooseConnection = require('./database-connection')
+const socketService = require('./socket-service')
 
 const clientPromise = Promise.resolve(mongooseConnection.getClient())
 
@@ -28,6 +30,7 @@ if (app.get('env') == 'development') {
     .watch([`${__dirname}/public`, `${__dirname}/views`])
 }
 
+app.set('io', socketService)
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')

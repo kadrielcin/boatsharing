@@ -40,7 +40,7 @@ export default {
         input(v-model="password" id="password" type="password" placeholder="Your password" required)
       input(type="submit" value="Log in")
     div(v-if="backendError") {{ backendError }}
-    div Don't have an account yet? <router-link to="/register">Register</router-link>
+    div Don`t have an account yet? <router-link to="/register">Register</router-link>
 </template>
 
 <style lang="scss" scoped>
