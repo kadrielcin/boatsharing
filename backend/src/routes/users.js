@@ -49,26 +49,30 @@ async function createPhoto(filename) {
 }
 
 router.get('/initialize', async (req, res) => {
-  const mihri = await User.create({ name: 'kadri', age: 35 })
-  const armagan = await User.create({ name: 'serhat', age: 36 })
+  const kadri = new User({ name: 'kadri', age: 35, email: 'kadri@kadri.com' })
+  await kadri.setPassword('test')
+  await kadri.save()
 
-  const steve = await User.create({ name: 'baris', age: 21 })
-  steve.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
-  steve.save()
+  const serhat = new User({ name: 'serhat', age: 36, email: 'serhat@serhat.com' })
+  await serhat.setPassword('test')
+  await serhat.save()
+
+  const baris = new User({ name: 'baris', age: 21, email: 'baris@baris.com' })
+  await baris.setPassword('test')
+  await baris.save()
+
+  baris.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
+  baris.save()
 
   const berlinPhoto = await createPhoto('berlin.jpg')
   const munichPhoto = await createPhoto('munich.jpg')
 
-  await steve.addPhoto(berlinPhoto)
-  await steve.addPhoto(munichPhoto)
+  await baris.addPhoto(berlinPhoto)
+  await baris.addPhoto(munichPhoto)
 
-  await armagan.likePhoto(berlinPhoto)
-  await mihri.likePhoto(berlinPhoto)
+  await serhat.likePhoto(berlinPhoto)
+  await kadri.likePhoto(berlinPhoto)
 
-  // eslint-disable-next-line no-console
-  // eslint-disable-next-line no-undef
-  // eslint-disable-next-line no-console
-  // eslint-disable-next-line no-undef
   console.log(baris)
   res.sendStatus(200)
 })
