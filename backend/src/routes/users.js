@@ -7,6 +7,7 @@ const describeImage = require('../lib/image-description')
 const downloadImage = require('../lib/download-image')
 const User = require('../models/user')
 const Photo = require('../models/photo')
+const Boat = require('../models/boat')
 
 /* GET users listing. */
 router.get('/', async (req, res) => {
@@ -72,6 +73,14 @@ router.get('/initialize', async (req, res) => {
 
   await serhat.likePhoto(berlinPhoto)
   await kadri.likePhoto(berlinPhoto)
+
+  const dolunay = await createBoat()
+  const doganay = await createBoat()
+  const baturay = await createBoat()
+
+  await serhat.addBoat(dolunay)
+  await kadri.addBoat(doganay)
+  await baris.addBoat(baturay)
 
   console.log(baris)
   res.sendStatus(200)

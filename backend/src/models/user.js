@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema({
       autopopulate: true,
     },
   ],
+  boats: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Boat',
+      autopopulate: true,
+    },
+  ],
+
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -35,6 +43,12 @@ const userSchema = new mongoose.Schema({
 class User {
   async addPhoto(photo) {
     this.photos.push(photo)
+    await this.save()
+  }
+  // addBoat must be added
+
+  async addBoat(boat) {
+    this.boats.push(boat)
     await this.save()
   }
 
