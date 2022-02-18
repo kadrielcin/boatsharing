@@ -63,7 +63,7 @@ router.get('/initialize', async (req, res) => {
   await baris.setPassword('test')
   await baris.save()
 
-  baris.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
+  baris.bio = 'An awesome skipper'
   baris.save()
 
   const baturay1boatPhoto = await createPhoto('baturay1boat.jpg')

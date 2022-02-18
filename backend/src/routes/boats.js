@@ -6,7 +6,7 @@ const Boat = require('../models/boat')
 /* POST create a boat */
 router.post('/', async (req, res) => {
   const boatToCreate = {
-    filename: req.body.filename,
+    //filename: req.body.filename,
   }
 
   const createdBoat = await Boat.create(boatToCreate)
