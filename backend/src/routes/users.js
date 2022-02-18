@@ -65,14 +65,14 @@ router.get('/initialize', async (req, res) => {
   baris.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
   baris.save()
 
-  const berlinPhoto = await createPhoto('berlin.jpg')
-  const munichPhoto = await createPhoto('munich.jpg')
+  const baturay1boatPhoto = await createPhoto('baturay1boat.jpg')
+  const baturay2boatPhoto = await createPhoto('baturay2boat.jpg')
 
-  await baris.addPhoto(berlinPhoto)
-  await baris.addPhoto(munichPhoto)
+  await baris.addPhoto(baturay1boatPhoto)
+  await baris.addPhoto(baturay2boatPhoto)
 
-  await serhat.likePhoto(berlinPhoto)
-  await kadri.likePhoto(berlinPhoto)
+  await serhat.likePhoto(baturay1boatPhoto)
+  await kadri.likePhoto(baturay2boatPhoto)
 
   const dolunay = await createBoat()
   const doganay = await createBoat()
