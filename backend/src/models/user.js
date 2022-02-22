@@ -13,10 +13,10 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   bio: String,
-  photos: [
+  boatPhotos: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Photo',
+      ref: 'BoatPhoto',
       autopopulate: true,
     },
   ],
@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Photo',
+      ref: 'Boat',
     },
   ],
   createdAt: {
@@ -41,22 +41,21 @@ const userSchema = new mongoose.Schema({
 })
 
 class User {
-  async addPhoto(photo) {
-    this.photos.push(photo)
+  async addBoatPhoto(boatPhoto) {
+    this.boatPhotos.push(boatPhoto)
     await this.save()
   }
-  // addBoat must be added
 
   async addBoat(boat) {
     this.boats.push(boat)
     await this.save()
   }
 
-  async likePhoto(photo) {
-    this.likes.push(photo)
-    photo.likedBy.push(this)
+  async likeBoat(boat) {
+    this.likes.push(boat)
+    boat.likedBy.push(this)
 
-    await photo.save()
+    await boat.save()
     await this.save()
   }
 }

@@ -1,13 +1,14 @@
+/* eslint-disable spaced-comment */
 /* eslint-disable no-console */
 const express = require('express')
 
 const router = express.Router()
-const axios = require('axios')
+//const axios = require('axios')
 
-const describeImage = require('../lib/image-description')
-const downloadImage = require('../lib/download-image')
+//const describeImage = require('../lib/image-description')
+//const downloadImage = require('../lib/download-image')
 const User = require('../models/user')
-const Photo = require('../models/photo')
+const BoatPhoto = require('../models/boat-photo')
 const Boat = require('../models/boat')
 
 /* GET users listing. */
@@ -36,18 +37,18 @@ router.post('/', async (req, res) => {
   res.send(createdUser)
 })
 
-async function createPhoto(filename) {
-  const photo = await Photo.create({ filename })
+async function createBoatPhoto(filename) {
+  const boatPhoto = await BoatPhoto.create({ filename })
 
-  const picsumUrl = `https://picsum.photos/seed/${photo._id}/300/300`
+  /*const picsumUrl = `https://picsum.photos/seed/${boatPhoto._id}/300/300`
   const pictureRequest = await axios.get(picsumUrl)
-  photo.filename = pictureRequest.request.path
+  boatPhoto.filename = pictureRequest.request.path
 
   const imagePath = await downloadImage(picsumUrl, filename)
   const description = await describeImage(imagePath)
-  photo.description = description.BestOutcome.Description
+  boatPhoto.description = description.BestOutcome.Description*/
 
-  return photo.save()
+  return boatPhoto.save()
 }
 
 router.get('/initialize', async (req, res) => {
@@ -66,18 +67,19 @@ router.get('/initialize', async (req, res) => {
   baris.bio = 'An awesome skipper'
   baris.save()
 
-  const baturay1boatPhoto = await createPhoto('baturay1boat.jpg')
-  const baturay2boatPhoto = await createPhoto('baturay2boat.jpg')
+  const baturay1boatPhoto = await createBoatPhoto('baturay1boat.jpg')
+  const baturay2boatPhoto = await createBoatPhoto('baturay2boat.jpg')
 
-  await baris.addPhoto(baturay1boatPhoto)
-  await baris.addPhoto(baturay2boatPhoto)
+  await baris.addBoatPhoto(baturay1boatPhoto)
+  await baris.addBoatPhoto(baturay2boatPhoto)
 
-  await serhat.likePhoto(baturay1boatPhoto)
-  await kadri.likePhoto(baturay2boatPhoto)
+  // const dolunay = new Boat({ name: 'dolunay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
+  // const doganay = new Boat({ name: 'doganay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
+  // const baturay = new Boat({ name: 'baturay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
 
-  const dolunay = await createBoat()
-  const doganay = await createBoat()
-  const baturay = await createBoat()
+  const dolunay = await Boat.create({ name: 'dolunay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
+  const doganay = await Boat.create({ name: 'doganay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
+  const baturay = await Boat.create({ name: 'baturay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
 
   await serhat.addBoat(dolunay)
   await kadri.addBoat(doganay)
@@ -89,20 +91,20 @@ router.get('/initialize', async (req, res) => {
 
 router.post('/:userId/adds', async (req, res) => {
   const user = await User.findById(req.params.userId)
-  const photo = await Photo.findById(req.body.photoId)
+  const boatPhoto = await BoatPhoto.findById(req.body.boatPhotoId)
 
-  await user.addPhoto(photo)
+  await user.addPhoto(boatPhoto)
   res.sendStatus(200)
 })
 
-router.post('/:userId/likes', async (req, res) => {
+/*router.post('/:userId/likes', async (req, res) => {
   const user = await User.findById(req.params.userId)
   const photo = await Photo.findById(req.body.photoId)
 
   await user.likePhoto(photo)
   res.sendStatus(200)
 })
-
+*/
 router.get('/:userId', async (req, res) => {
   const user = await User.findById(req.params.userId)
 

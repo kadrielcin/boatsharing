@@ -2,10 +2,25 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
 const boatSchema = new mongoose.Schema({
-  filename: {
+  name: {
     type: String,
-    required: true,
   },
+  age: {
+    type: Number,
+  },
+
+  length: {
+    type: Number,
+  },
+
+  cabins: {
+    type: Number,
+  },
+
+  location: {
+    type: String,
+  },
+
   likedBy: [
     {
       type: mongoose.Schema.Types.ObjectId,

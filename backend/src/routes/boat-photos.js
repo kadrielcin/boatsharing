@@ -1,16 +1,16 @@
 const express = require('express')
 
 const router = express.Router()
-const Photo = require('../models/photo')
+const BoatPhoto = require('../models/boat-photo')
 
 /* POST create a photo */
 router.post('/', async (req, res) => {
-  const photoToCreate = {
+  const boatPhotoToCreate = {
     filename: req.body.filename,
   }
 
-  const createdPhoto = await Photo.create(photoToCreate)
-  res.send(createdPhoto)
+  const createdBoatPhoto = await BoatPhoto.create(boatPhotoToCreate)
+  res.send(createdBoatPhoto)
 })
 
 module.exports = router
