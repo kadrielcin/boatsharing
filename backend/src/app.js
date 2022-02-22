@@ -18,8 +18,9 @@ const clientPromise = mongoose.connection.asPromise().then(connection => connect
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
-const photosRouter = require('./routes/photos')
+const boatPhotosRouter = require('./routes/boat-photos')
 const accountRouter = require('./routes/account')
+const boatsRouter = require('./routes/boats')
 
 const app = express()
 
@@ -83,7 +84,8 @@ app.use('/api', (req, res, next) => {
 app.use('/api/', indexRouter)
 app.use('/api/account', accountRouter)
 app.use('/api/users', usersRouter)
-app.use('/api/photos', photosRouter)
+app.use('/api/boatPhotos', boatPhotosRouter)
+app.use('/api/boats', boatsRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
