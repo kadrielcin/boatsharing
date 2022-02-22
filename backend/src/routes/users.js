@@ -77,9 +77,9 @@ router.get('/initialize', async (req, res) => {
   // const doganay = new Boat({ name: 'doganay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
   // const baturay = new Boat({ name: 'baturay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
 
-  const dolunay = await Boat.create({ name: 'dolunay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
-  const doganay = await Boat.create({ name: 'doganay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
-  const baturay = await Boat.create({ name: 'baturay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
+  const dolunay = await Boat.create({ name: 'dolunay', age: 12, length: 29, cabins: 4, location: 'datca' })
+  const doganay = await Boat.create({ name: 'doganay', age: 1, length: 9, cabins: 2, location: 'marmaris' })
+  const baturay = await Boat.create({ name: 'baturay', age: 2, length: 13, cabins: 2, location: 'gocek' })
 
   await serhat.addBoat(dolunay)
   await kadri.addBoat(doganay)
