@@ -11,17 +11,19 @@ export default {
 </script>
 
 <template lang="pug">
+div(v-if="user").box
+  .photo-box
+    img(alt="boatsharing_user" width=300 src="../assets/smilingboat-pp.jpg")
+
+
 .box
   h1 {{ user.name }} ({{ user.age }})
   p Bio: {{ user.bio || defaultBio }}
-  h2 Photos ({{ user.photos.length }})
+  h2 Photo ({{ user.boatPhotos.length }})
 
-  .photo(v-for="photo in user.photos")
-    img(:src="`https://picsum.photos${photo.filename}`" :alt="photo.description" :title="photo.description")
-    p(v-if="!photo.likedBy.length")
-      | no likes yet!
-    p(v-else)
-      | {{ photo.likedBy.map(user => user.name).join(', ') }}
+  .boatPhoto(v-for="boatPhoto in user.boatPhotos")
+  img(:src="`https://picsum.boatPhotos${boatPhoto.filename}`" :alt="boat.description" :title="boat.description")
+    
 </template>
 
 <style lang="scss" scoped>

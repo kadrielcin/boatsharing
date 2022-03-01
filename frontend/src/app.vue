@@ -14,6 +14,9 @@ export default {
 </script>
 <template lang="pug">
   #app
+    .logo
+        router-link(to="/")
+          img(src="@/assets/mylogo.png" style="width: auto; height: auto; max-width: 100px; max-height: 100px;")
     #nav
       router-link(to="/profile") Profile
       router-link(to="/login") Login
@@ -23,8 +26,21 @@ export default {
 </template>
 
 <style lang="scss">
-@import '@/assets/theme.scss';
-@import 'bootstrap/scss/bootstrap.scss';
+body {
+  background: linear-gradient(to right, rgb(255, 255, 255), rgb(0, 238, 255));
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  img {
+    width: 3px;
+    height: 3px;
+    display: block;
+    margin: 0;
+  }
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,6 +50,9 @@ export default {
 
 #nav {
   padding: 30px;
+  justify-content: flex-start;
+  flex: 1;
+  text-align: left;
 
   a {
     font-weight: bold;

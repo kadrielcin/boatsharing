@@ -97,14 +97,14 @@ router.post('/:userId/adds', async (req, res) => {
   res.sendStatus(200)
 })
 
-/*router.post('/:userId/likes', async (req, res) => {
+router.post('/:userId/likes', async (req, res) => {
   const user = await User.findById(req.params.userId)
-  const photo = await Photo.findById(req.body.photoId)
+  const boat = await Boat.findById(req.body.boatId)
 
-  await user.likePhoto(photo)
+  await user.likeBoat(boat)
   res.sendStatus(200)
 })
-*/
+
 router.get('/:userId', async (req, res) => {
   const user = await User.findById(req.params.userId)
 
