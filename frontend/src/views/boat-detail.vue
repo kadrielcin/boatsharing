@@ -20,8 +20,8 @@ export default {
 </script>
 
 <template lang="pug">
-    .about
-        h1 Boat detail
-        BoatCard(:boat="boat")
+  .about
+    h1 Boat detail
+    BoatCard(:boat="boat")
         
 </template>

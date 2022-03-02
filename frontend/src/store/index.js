@@ -72,6 +72,11 @@ const store = new Vuex.Store({
       const usersRequest = await axios.get('/api/users')
       return usersRequest.data
     },
+    async fetchBoat(store, id) {
+      const boatRequest = await axios.get(`/api/boats/${id}`)
+      return boatRequest.data
+    },
+
     async fetchSession({ commit }) {
       const user = await axios.get('/api/account/session')
       commit(mutations.SET_USER, user.data || null)

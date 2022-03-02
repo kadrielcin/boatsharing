@@ -55,6 +55,7 @@ router.get('/initialize', async (req, res) => {
   await User.deleteMany({})
   await Boat.deleteMany({})
   await BoatPhoto.deleteMany({})
+
   const kadri = new User({ name: 'kadri', age: 35, email: 'kadri@kadri.com' })
   await kadri.setPassword('test')
   await kadri.save()
@@ -76,13 +77,13 @@ router.get('/initialize', async (req, res) => {
   await baris.addBoatPhoto(baturay1boatPhoto)
   await baris.addBoatPhoto(baturay2boatPhoto)
 
-  // const dolunay = new Boat({ name: 'dolunay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
-  // const doganay = new Boat({ name: 'doganay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
-  // const baturay = new Boat({ name: 'baturay', age: 12, length: 39, cabins: 2, location: 'marmaris' })
+  // const dolunay = new Boat({ name: 'dolunay', age: 12, longness: 39, cabins: 2, location: 'marmaris' })
+  // const doganay = new Boat({ name: 'doganay', age: 12, longness: 39, cabins: 2, location: 'marmaris' })
+  // const baturay = new Boat({ name: 'baturay', age: 12, longness: 39, cabins: 2, location: 'marmaris' })
 
-  const dolunay = await Boat.create({ name: 'dolunay', age: 12, length: 29, cabins: 4, location: 'datca' })
-  const doganay = await Boat.create({ name: 'doganay', age: 1, length: 9, cabins: 2, location: 'marmaris' })
-  const baturay = await Boat.create({ name: 'baturay', age: 2, length: 13, cabins: 2, location: 'gocek' })
+  const dolunay = await Boat.create({ name: 'dolunay', age: 12, longness: 29, cabins: 4, location: 'datca' })
+  const doganay = await Boat.create({ name: 'doganay', age: 1, longness: 9, cabins: 2, location: 'marmaris' })
+  const baturay = await Boat.create({ name: 'baturay', age: 2, longness: 13, cabins: 2, location: 'gocek' })
 
   await serhat.addBoat(dolunay)
   await kadri.addBoat(doganay)

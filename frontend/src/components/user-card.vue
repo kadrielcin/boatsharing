@@ -13,17 +13,18 @@ export default {
 <template lang="pug">
 div(v-if="user").box
   .photo-box
-    img(alt="boatsharing_user" width=300 src="../assets/smilingboat-pp.jpg")
+   
+  .box
+    h1 {{ user.name }} ({{ user.age }})
+    p Bio: {{ user.bio || defaultBio }}
+    h2 Photo ({{ user.boatPhotos.length }})
+    h1 {{ user.name }} has {{ user.boats.length }} boat(s)
+    .boat(v-for="boat in user.boats")
+      router-link(:to="`/boats/${boat._id}`") {{ boat.name }}
 
-
-.box
-  h1 {{ user.name }} ({{ user.age }})
-  p Bio: {{ user.bio || defaultBio }}
-  h2 Photo ({{ user.boatPhotos.length }})
-
-  .boatPhoto(v-for="boatPhoto in user.boatPhotos")
-  img(:src="`https://picsum.boatPhotos${boatPhoto.filename}`" :alt="boat.description" :title="boat.description")
+  
     
+      
 </template>
 
 <style lang="scss" scoped>

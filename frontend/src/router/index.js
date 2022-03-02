@@ -31,6 +31,14 @@ export default function init(store) {
         component: () => import(/* webpackChunkName: "about" */ '../views/user-detail.vue'),
       },
       {
+        path: '/boats/:id',
+        name: 'BoatDetail',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/boat-detail.vue'),
+      },
+      {
         path: '/register',
         name: 'register',
         component: Register,
@@ -56,14 +64,6 @@ export default function init(store) {
           if (!store.state.user) return next('/login')
           return next()
         },
-      },
-      {
-        path: '/boats/:id',
-        name: 'BoatCard',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/boat-detail.vue'),
       },
     ],
   })
