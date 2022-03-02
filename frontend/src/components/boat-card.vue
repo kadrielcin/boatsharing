@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'boatCard',
+  name: 'BoatCard',
   props: ['boat'],
   data() {
     return {}
@@ -10,19 +10,22 @@ export default {
 
 <template lang="pug">
 div
-  
   .box
-    div
-      .photo-box
-        (v-for="photo in.boatPhotos")
-    img(:src="`https://picsum.boatPhotos${boatPhoto.filename}`")
-    
+    h1 {{ user.name }} ({{ user.age }})
+    p Bio: {{ user.bio || defaultBio }}
+    h2 Photos ({{ user.boatPhotos.length }})
+
+  .boatPhoto(v-for="boatPhoto in boat.boatPhotos")
+    img(:src="`https://picsum.boatPhotos${boatPhoto.filename}`" :alt="boatPhoto.description" :title="boatPhoto.description")
+
+  .box
     p Name: {{ boat.boatName }}
     p Age: {{ boat.age }}
     p Length: {{ boat.length }}
     p Cabins: {{ boat.cabins }}
     p Location: {{ boat.location }}
     p Cabins: {{ boat.cabins }}
+
     p(v-if="!boat.likedBy.length")
       | no likes yet!
     p(v-else)
