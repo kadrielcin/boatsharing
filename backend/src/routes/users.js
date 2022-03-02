@@ -52,6 +52,9 @@ async function createBoatPhoto(filename) {
 }
 
 router.get('/initialize', async (req, res) => {
+  await User.deleteMany({})
+  await Boat.deleteMany({})
+  await BoatPhoto.deleteMany({})
   const kadri = new User({ name: 'kadri', age: 35, email: 'kadri@kadri.com' })
   await kadri.setPassword('test')
   await kadri.save()
