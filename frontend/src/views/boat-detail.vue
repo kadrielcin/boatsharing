@@ -7,7 +7,7 @@ export default {
   components: { BoatCard },
   data() {
     return {
-      boat: null,
+      boat: [],
     }
   },
   async created() {

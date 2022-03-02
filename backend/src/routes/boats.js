@@ -13,4 +13,9 @@ router.post('/', async (req, res) => {
   res.send(createdBoat)
 })
 
+router.get('/:boatId', async (req, res) => {
+  const boat = await Boat.findById(req.params.boatId)
+  if (boat) res.send(boat)
+  else res.sendStatus(404)
+})
 module.exports = router

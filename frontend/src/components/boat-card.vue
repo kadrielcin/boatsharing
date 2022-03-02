@@ -11,24 +11,13 @@ export default {
 <template lang="pug">
 div
   .box
-    div  
-      
+    div
+      p Name: {{ boat.name }}     
       p Age: {{ boat.age }}
       p Longness: {{ boat.longness }}
       p Cabins: {{ boat.cabins }}
-      p Location: {{ boat.location }}
-        
-      p(v-if="!boat.likedBy.length")
-        | no likes yet!
-      p(v-else)
-        | {{ boat.likedBy.map(user => user.name).join(', ') }} 
-      
-      .photo.box
-        h1 {{ user.name }} ({{ user.age }})
-        p Bio: {{ user.bio || defaultBio }}
-        h2 Photos ({{ user.boatPhotos.length }})
-
-        
+      p Location: {{ boat.location }}  
+       
 
 </template>
 
