@@ -9,7 +9,7 @@ const boatSchema = new mongoose.Schema({
     type: Number,
   },
 
-  length: {
+  longness: {
     type: Number,
   },
 
