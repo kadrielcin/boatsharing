@@ -32,7 +32,7 @@ export default {
 
 <template lang="pug">
   .home
-    h1 Boatsharing {{ user.name }}
+    h1 Welcome  {{ user.name }}
     p The time is: {{ time }}
     h2 Users
     div(v-for="user in users")
@@ -55,3 +55,8 @@ export default {
         input(type="submit" value="Send message")
 
 </template>
+<style lang="scss">
+.home p {
+  front-size: 120px;
+}
+</style>

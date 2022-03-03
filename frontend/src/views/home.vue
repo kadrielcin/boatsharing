@@ -15,11 +15,11 @@ export default {
     .card
       .headline
         .name 
-          h1.title Boatsharing
-        .slogan
-          p Welcome on board!
+          h1.title Boatsharing        
+        .slogan          
+          p Welcome on board!                 
       .summary
-        p Choose please, your favorit boat!        
+        p Find your favorit boat!        
 </template>
 
 <style lang="scss">

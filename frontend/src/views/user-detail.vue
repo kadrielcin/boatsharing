@@ -22,7 +22,7 @@ export default {
 
 <template lang="pug">
   .about
-    h1 This is a user detail
+    h1 This is user details:
     UserCard(:user="user" v-if="user")
     Counter
 </template>

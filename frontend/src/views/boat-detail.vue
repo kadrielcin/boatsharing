@@ -21,7 +21,7 @@ export default {
 
 <template lang="pug">
   .about
-    h1 Boat detail
+    h1 Boat details:
     BoatCard(:boat="boat")
         
 </template>

@@ -4,7 +4,7 @@ export default {
   props: ['user'],
   data() {
     return {
-      defaultBio: 'This user has no bios.',
+      defaultBio: 'This user has no bios yet.',
     }
   },
 }
