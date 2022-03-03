@@ -19,7 +19,10 @@ export default {
         .slogan          
           p Welcome on board!                 
       .summary
-        p Find your favorit boat!        
+        p Find your favorit boat! 
+         div
+      .photo-box
+        img(alt="boat_user" width=300 src="../assets/picture3.png")      
 </template>
 
 <style lang="scss">
