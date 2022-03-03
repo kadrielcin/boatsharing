@@ -72,14 +72,16 @@ router.get('/initialize', async (req, res) => {
   baris.save()
 
   const baturay1boatPhoto = await createBoatPhoto('baturay1boat.jpg')
-  const baturay2boatPhoto = await createBoatPhoto('baturay2boat.jpg')
+  const doganay1boatPhoto = await createBoatPhoto('doganay1boat.jpg')
+  const dolunay1boatPhoto = await createBoatPhoto('dolunay1boat.jpg')
 
   await baris.addBoatPhoto(baturay1boatPhoto)
-  await baris.addBoatPhoto(baturay2boatPhoto)
+  await kadri.addBoatPhoto(doganay1boatPhoto)
+  await serhat.addBoatPhoto(dolunay1boatPhoto)
 
-  const dolunay = await Boat.create({ name: 'dolunay', age: 8, longness: 29, cabins: 4, location: 'datca' })
-  const doganay = await Boat.create({ name: 'doganay', age: 7, longness: 19, cabins: 2, location: 'marmaris' })
-  const baturay = await Boat.create({ name: 'baturay', age: 6, longness: 39, cabins: 2, location: 'gocek' })
+  const dolunay = await Boat.create({ name: 'Dolunay', age: 8, longness: 29, cabins: 2, location: 'Datca' })
+  const doganay = await Boat.create({ name: 'Doganay', age: 7, longness: 35, cabins: 2, location: 'Marmaris' })
+  const baturay = await Boat.create({ name: 'Baturay', age: 6, longness: 39, cabins: 4, location: 'Gocek' })
 
   await serhat.addBoat(dolunay)
   await kadri.addBoat(doganay)

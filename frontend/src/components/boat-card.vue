@@ -19,9 +19,7 @@ div
       p Age: {{ boat.age }}
       p Longness(feet): {{ boat.longness }}
       p Cabins: {{ boat.cabins }}
-      p Location: {{ boat.location }}  
-       
-
+      p Location: {{ boat.location }}
 </template>
 
 <style lang="scss" scoped>
