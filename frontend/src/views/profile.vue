@@ -31,6 +31,9 @@ export default {
 </script>
 
 <template lang="pug">
+div
+  .box      
+  div  
   .home
     h1 Welcome  {{ user.name }}
     p The time is: {{ time }}
@@ -53,10 +56,11 @@ export default {
       form(@submit="sendMessage")
         input(type="text" v-model="message")
         input(type="submit" value="Send message")
-
+    .photo-box
+    img(alt="boat_user" width=200 src="../assets/picture2.png")    
 </template>
 <style lang="scss">
 .home p {
-  front-size: 120px;
+  font-size: 15px;
 }
 </style>

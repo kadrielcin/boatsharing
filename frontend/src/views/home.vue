@@ -15,14 +15,14 @@ export default {
     .card
       .headline
         .name 
-          h1.title Boatsharing        
+          h1.title Boat sharing        
         .slogan          
           p Welcome on board!                 
       .summary
-        p Find your favorit boat! 
+        p 
          div
       .photo-box
-        img(alt="boat_user" width=300 src="../assets/picture3.png")      
+        img(alt="boat_user" width=800 src="../assets/picture3.png")      
 </template>
 
 <style lang="scss">
